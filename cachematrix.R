@@ -28,7 +28,11 @@ makeCacheMatrix <- function(internalMatrix = matrix()) {
   cachedSolution <- NULL
   
   # a function which sets this object's internal matrix to value passed in
-  set <- function(matrix) internalMatrix <<- matrix
+  # and also invalidates the caches solution (setting it to NULL)
+  set <- function(matrix) {
+    internalMatrix <<- matrix
+    cachedSolution <<- NULL
+  }
 
   # a function which gets this object's internal matrix
   get <- function() internalMatrix
